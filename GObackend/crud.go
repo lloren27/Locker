@@ -19,12 +19,12 @@ import (
 var sneakersCollection = db().Database("locker").Collection("sneakers")
 
 type sneaker struct {
-	Id           primitive.ObjectID `json:"id" bson:"_id,omitempty"`
-	Name         string             `json:"name"`
-	Brand        string             `json:"brand"`
-	Size         string             `json:"size"`
-	DatePurchase time.Time          `json:"date_purchase"`
-	Cover        string             `json:"cover"`
+	Id    primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	Name  string             `json:"name"`
+	Brand string             `json:"brand"`
+	Size  string             `json:"size"`
+	Date  time.Time          `json:"date"`
+	Cover string             `json:"cover"`
 }
 
 func createNewSneaker(w http.ResponseWriter, r *http.Request) {
@@ -34,6 +34,10 @@ func createNewSneaker(w http.ResponseWriter, r *http.Request) {
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	var sneaker sneaker
 	json.Unmarshal(reqBody, &sneaker)
+
+	if sneaker.Cover == "" {
+		sneaker.Cover = "https://res.cloudinary.com/lloren27/image/upload/v1609940770/descarga.png"
+	}
 	// Actualizas tu array para meter el nuevo elemento
 	insertResult, err := sneakersCollection.InsertOne(context.TODO(), sneaker)
 	if err != nil {
@@ -111,7 +115,7 @@ func deleteSneaker(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("deleted %v documents\n", res.DeletedCount)
+	fmt.Println("deleted %v documents\n", res.DeletedCount)
 	json.NewEncoder(w).Encode(res.DeletedCount) // return number of documents deleted
 
 }
@@ -127,11 +131,11 @@ func updateSneaker(w http.ResponseWriter, r *http.Request) {
 	}
 
 	type updateBody struct {
-		Name         string    `json:"name"`
-		Brand        string    `json:"brand"`
-		Size         string    `json:"size"`
-		DatePurchase time.Time `json:"date_purchase"`
-		Cover        string    `json:"cover"`
+		Name  string    `json:"name"`
+		Brand string    `json:"brand"`
+		Size  string    `json:"size"`
+		Date  time.Time `json:"date"`
+		Cover string    `json:"cover"`
 	}
 	var body updateBody
 	e := json.NewDecoder(r.Body).Decode(&body)
@@ -146,7 +150,7 @@ func updateSneaker(w http.ResponseWriter, r *http.Request) {
 		ReturnDocument: &after,
 	}
 	update := bson.M{
-		"$set": bson.M{"name": body.Name, "brand": body.Brand, "size": body.Size, "date_purchase": body.DatePurchase, "cover": body.Cover},
+		"$set": bson.M{"name": body.Name, "brand": body.Brand, "size": body.Size, "date": body.Date, "cover": body.Cover},
 	}
 	updateResult := sneakersCollection.FindOneAndUpdate(context.TODO(), filter, update, &returnOpt)
 

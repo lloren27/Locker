@@ -1,12 +1,10 @@
 const SneakerServices = {
   getSneackers: async () => {
-    // introduccir en el fetch la url de la api
     const response = await fetch('http://localhost:8082/sneakers');
     const json = await response.json();
     return json;
   },
   createSneaker: async (data) => {
-    // introduccir en el fetch la url de la api
     const response = await fetch('http://localhost:8082/sneaker', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -14,6 +12,19 @@ const SneakerServices = {
         'Content-Type': 'application/json',
       },
     });
+    const json = await response.json();
+    return json;
+  },
+  deleteSneaker: async (sneakerId) => {
+    const response = await fetch(
+      `http://localhost:8082/deleteSneaker/${sneakerId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
     const json = await response.json();
     return json;
   },

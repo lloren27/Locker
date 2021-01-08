@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "MyTestApp-tvOS.app"
-               BlueprintName = "MyTestApp-tvOS"
-               ReferencedContainer = "container:MyTestApp.xcodeproj">
+               BuildableName = "Locker-tvOS.app"
+               BlueprintName = "Locker-tvOS"
+               ReferencedContainer = "container:Locker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "MyTestApp-tvOSTests.xctest"
-               BlueprintName = "MyTestApp-tvOSTests"
-               ReferencedContainer = "container:MyTestApp.xcodeproj">
+               BuildableName = "Locker-tvOSTests.xctest"
+               BlueprintName = "Locker-tvOSTests"
+               ReferencedContainer = "container:Locker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "MyTestApp-tvOS.app"
-            BlueprintName = "MyTestApp-tvOS"
-            ReferencedContainer = "container:MyTestApp.xcodeproj">
+            BuildableName = "Locker-tvOS.app"
+            BlueprintName = "Locker-tvOS"
+            ReferencedContainer = "container:Locker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "MyTestApp-tvOS.app"
-            BlueprintName = "MyTestApp-tvOS"
-            ReferencedContainer = "container:MyTestApp.xcodeproj">
+            BuildableName = "Locker-tvOS.app"
+            BlueprintName = "Locker-tvOS"
+            ReferencedContainer = "container:Locker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
